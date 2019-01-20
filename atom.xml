@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="//babylls.com/"/>
-  <updated>2019-01-20T08:14:41.780Z</updated>
+  <updated>2019-01-20T08:47:56.706Z</updated>
   <id>//babylls.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="//babylls.com/2019/01/20/2019%E5%B9%B4%E8%AE%A1%E5%88%92/"/>
     <id>//babylls.com/2019/01/20/2019年计划/</id>
     <published>2019-01-20T08:05:36.000Z</published>
-    <updated>2019-01-20T08:14:41.780Z</updated>
+    <updated>2019-01-20T08:47:56.706Z</updated>
     
     <content type="html"><![CDATA[<ul><li>1.</li><li>2.</li></ul>]]></content>
     
@@ -44,6 +44,8 @@
       <category term="2019" scheme="//babylls.com/tags/2019/"/>
     
       <category term="计划" scheme="//babylls.com/tags/%E8%AE%A1%E5%88%92/"/>
+    
+      <category term="机器学习" scheme="//babylls.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
