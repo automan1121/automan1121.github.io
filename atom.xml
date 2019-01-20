@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Litten的博客</title>
-  <icon>https://www.gravatar.com/avatar/1b1060c5a2544f4ae03788a00f7c2c93</icon>
-  <subtitle>胆小认生，不易相处</subtitle>
+  <title>Automan打怪兽</title>
+  <icon>https://www.gravatar.com/avatar/044d65d51877f6529626f2925956a325</icon>
+  <subtitle>心有蔷薇，细诱猛虎</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="//litten.me/"/>
+  <link href="//babylls.com/"/>
   <updated>2019-01-20T05:02:06.447Z</updated>
-  <id>//litten.me/</id>
+  <id>//babylls.com/</id>
   
   <author>
-    <name>Litten</name>
-    <email>litten225@qq.com</email>
+    <name>Automan</name>
+    <email>babylls@163.com</email>
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
     <title>Hello World</title>
-    <link href="//litten.me/2019/01/20/hello-world/"/>
-    <id>//litten.me/2019/01/20/hello-world/</id>
+    <link href="//babylls.com/2019/01/20/hello-world/"/>
+    <id>//babylls.com/2019/01/20/hello-world/</id>
     <published>2019-01-20T05:02:06.446Z</published>
     <updated>2019-01-20T05:02:06.447Z</updated>
     
