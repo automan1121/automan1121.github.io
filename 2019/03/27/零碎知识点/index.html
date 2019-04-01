@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Automan打怪兽">
 <meta property="og:description" content="零碎知识点Q1:数据归一化、标准化      归一化 标准化     特点 数据缩放到0-1区间不同维度的特征对目标函数的影响权重一致                       由最大最小值决定改变了原数据分布(梯度下降等高线由椭圆变成圆) 消除量纲不同维度的特征具有可比性 由数据的整体分布决定不改变原数据分布   常用方法 $x^* = \frac{x-min}{max-min} $ $x^*">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-01T14:27:35.466Z">
+<meta property="og:updated_time" content="2019-04-01T15:51:25.166Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="零碎知识点">
 <meta name="twitter:description" content="零碎知识点Q1:数据归一化、标准化      归一化 标准化     特点 数据缩放到0-1区间不同维度的特征对目标函数的影响权重一致                       由最大最小值决定改变了原数据分布(梯度下降等高线由椭圆变成圆) 消除量纲不同维度的特征具有可比性 由数据的整体分布决定不改变原数据分布   常用方法 $x^* = \frac{x-min}{max-min} $ $x^*">
@@ -220,43 +220,33 @@
 <p>哪些模型需要归一化、哪些不需要？</p>
 <ul>
 <li>使用梯度下降优化的模型最好归一化，归一化后损失函数的等高线接近圆形，收敛速度加快。</li>
-<li>树型模型不需要归一化，分割点的选取与特征的绝对值大小无关。</li>
-</ul>
-<h3 id="Q2-正则化"><a href="#Q2-正则化" class="headerlink" title="Q2:正则化  "></a><font color="#F77A0B">Q2:正则化  </font></h3><p>什么叫正则化？常见的正则化有哪些？</p>
-<ul>
-<li><p>为了防止过拟合，在损失函数的基础上增加一个<font color="#F77A0B"><strong>参数的惩罚项</strong></font>（正则），使训练误差最小化时，模型的复杂度尽可能低，保证模型的泛化能力。</p>
-</li>
-<li><p>常见的有L0、L1、L2。L0、L1实现<font color="#F77A0B"><strong>稀疏</strong></font>（稀疏可特征选择、提高可解释性），L2实现<font color="#F77A0B"><strong>平滑</strong></font>（权值衰减，防止过拟合）。</p>
-<ul>
+<li>树型模型不需要归一化，分割点的选取与特征的绝对值大小无关。<h3 id="Q2-过拟合"><a href="#Q2-过拟合" class="headerlink" title=" Q2:过拟合  "></a><font color="#F77A0B"> Q2:过拟合  </font></h3><a><strong>什么叫过拟合？</strong></a></li>
+<li>模型在训练数据表现好但在验证数据表现差的现象。（<strong>学得好但是考不好</strong>）<br><a><strong>过拟合造成的原因以及如何判断过拟合？</strong></a><br><strong>原因：</strong></li>
+<li>1.训练数据与验证数据分布差异大。（训练数据噪声大、训练样本小等）</li>
+<li>2.模型复杂度过高。（参数过多、参数值过大等）<br><strong>极端示例：</strong></li>
+<li>1.训练样本只需要学习<strong>1个</strong>知识点，验证样本包含<strong>100个</strong>知识点。（学到的只是很小一部分知识）</li>
+<li>2.训练样本学习<strong>A</strong>知识点，验证样本考察<strong>BCD</strong>知识点。（学的都是不考的）</li>
+<li>3.参数过多。（极端情况下，无穷个参数一定能拟合任何曲线）</li>
+<li>4.参数值过大。（希望<strong>拟合所有的样本点</strong>，拟合曲线的波动大，当x小而需要y大时则w大）<br><strong>判断：</strong></li>
+<li>模型的训练误差不断降低，测试误差不断上升。<br><a><strong>怎么防止过拟合？</strong></a></li>
+<li>early stopping、正则化、扩大数据集、dropout等。<h3 id="Q3-正则化"><a href="#Q3-正则化" class="headerlink" title="Q3:正则化  "></a><font color="#F77A0B">Q3:正则化  </font></h3><a><strong>什么叫正则化？常见的正则化有哪些？</strong></a></li>
+<li>为了防止过拟合，在损失函数的基础上增加一个<font color="#F77A0B"><strong>参数的惩罚项</strong></font>（正则），使训练误差最小化时，模型的复杂度尽可能低，保证模型的泛化能力。</li>
+<li>常见的有L0、L1、L2。L0、L1实现<font color="#F77A0B"><strong>稀疏</strong></font>（稀疏可特征选择、提高可解释性），L2实现<font color="#F77A0B"><strong>平滑</strong></font>（权值衰减，防止过拟合）。<ul>
 <li>L0：向量中非0的个数，最小化L0即希望参数矩阵w中大部分元素都为0。</li>
 <li>L1：向量中的各元素绝对值之和$||w||_1$，最小化L1即参数矩阵w中大部分元素都为0（$||w||_1$在0不可导，参数以固定速率下降到0），L1为L0的近似解。</li>
 <li>L2：向量中的各元素平方之和$||w||_2$，最小化L2即参数矩阵w中大部分元素都接近0（$||w||_1$在0可导，参数约接近0下降速率越慢，越平滑）。</li>
 </ul>
 </li>
 </ul>
-<p>正则化为什么能增加模型的泛化能力，防止过拟合？</p>
+<p><a><strong>正则化为什么能增加模型的泛化能力，防止过拟合？</strong></a></p>
 <ul>
-<li><p>什么叫过拟合？造成过拟合的原因？</p>
-<ul>
-<li>过拟合：模型在训练数据表现好但在验证数据表现差的现象。</li>
-<li>原因：1.训练数据与验证数据分布差异大。（训练数据噪声大、训练样本小等）<br>          <pre>      2.模型复杂度过高。（参数过多、参数值过大等）</pre> </li>
-<li>举例：1.模型学习到的是噪声数据（知识）或者小样本知识，但是这些代表不了实际场景知识。<br><pre>      2.参数过多（极端情况下，无穷个参数一定能拟合任何曲线）、参数值过大（需要拟合所有的样本点，拟合曲线的波动大，当x小而需要y大时则w大）。</pre></li>
-</ul>
-</li>
-<li><p>正则化通过约束参数的数目与大小，来解决由参数引起的过拟合。</p>
-</li>
-<li>“欧姆剃刀”：训练误差最小的同时模型的复杂度越低，模型的泛化能力越强。</li>
-</ul>
-<p>L1与L2差异？</p>
-<ul>
+<li>造成过拟合原因第2点：模型复杂度高（参数多、数值大）。正则化可以通过约束参数的数目与大小，来解决由参数引起的过拟合。</li>
+<li>“欧姆剃刀”：训练误差最小的同时模型的复杂度越低，模型的泛化能力越强。<br><a><strong>L1与L2差异？</strong></a></li>
 <li>L1、L2都可以防止过拟合。</li>
-<li>L1-稀疏、L2-平滑。</li>
-</ul>
-<p>L1、L2的使用场景？什么时候L1优于L2？什么时候使用L1+L2?</p>
-<ul>
+<li>L1-稀疏、L2-平滑。<br><a><strong>L1、L2的使用场景？什么时候L1优于L2？什么时候使用L1+L2?</strong></a></li>
 <li>关注稀疏性、特征选择、可解释性时选择L1。</li>
 <li>其他场景一般选择L2。</li>
-<li>Elatic Net问题，平衡稀疏与光滑的问题。</li>
+<li>Elatic Net问题，平衡稀疏与光滑的问题。<h3 id="Q4-聚类、分类、回归等的评价指标以及使用场景？"><a href="#Q4-聚类、分类、回归等的评价指标以及使用场景？" class="headerlink" title="Q4:聚类、分类、回归等的评价指标以及使用场景？  "></a><font color="#F77A0B">Q4:聚类、分类、回归等的评价指标以及使用场景？  </font></h3><h3 id="Q5-数据不平衡的处理方式？"><a href="#Q5-数据不平衡的处理方式？" class="headerlink" title="Q5:数据不平衡的处理方式？  "></a><font color="#F77A0B">Q5:数据不平衡的处理方式？  </font></h3><h3 id="Q6-优化算法，随机梯度以及各种变式？"><a href="#Q6-优化算法，随机梯度以及各种变式？" class="headerlink" title="Q6:优化算法，随机梯度以及各种变式？  "></a><font color="#F77A0B">Q6:优化算法，随机梯度以及各种变式？  </font></h3><h3 id="Q7-特征选择？"><a href="#Q7-特征选择？" class="headerlink" title="Q7:特征选择？  "></a><font color="#F77A0B">Q7:特征选择？  </font></h3><h3 id="Q8-常见模型调参？"><a href="#Q8-常见模型调参？" class="headerlink" title="Q8:常见模型调参？  "></a><font color="#F77A0B">Q8:常见模型调参？  </font></h3><h3 id="Q9-特征为什么要离散化以及常见方法？"><a href="#Q9-特征为什么要离散化以及常见方法？" class="headerlink" title="Q9:特征为什么要离散化以及常见方法？  "></a><font color="#F77A0B">Q9:特征为什么要离散化以及常见方法？  </font></h3><h3 id="Q10-熵、交叉熵、JS散度？"><a href="#Q10-熵、交叉熵、JS散度？" class="headerlink" title="Q10:熵、交叉熵、JS散度？  "></a><font color="#F77A0B">Q10:熵、交叉熵、JS散度？  </font></h3></li>
 </ul>
 
       
